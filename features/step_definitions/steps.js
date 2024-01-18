@@ -12,7 +12,6 @@ Given('Abid is located {int} metres from Adam', function (distance) {
 When('Adam shouts {string}', function (message) {
     this.adam.shout(message)
     this.message = message
-    console.log(this.message)
 });
 
 
