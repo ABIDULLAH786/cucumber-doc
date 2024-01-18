@@ -1,17 +1,39 @@
 class Person {
-    distance = 0;
-    moveTo(distance) {
-        this.distance = distance
+    constructor(network) {
+      this.messages = []
+      this.network      = network
+  
+      this.network.subscribe(this)
     }
-
+    
     shout(message) {
-        console.log(message)
+      this.network.broadcast(message)
     }
-
-    messagesHeard(){
-        return ["free bagels at Adam's"]
-
+  
+    hear(message) {
+      this.messages.push(message)
     }
-}
-
-module.exports = Person;
+  
+    messagesHeard() {
+      return this.messages
+    }
+  }
+  
+  class Network {
+    constructor() {
+      this.listeners = []
+    }
+  
+    subscribe(person) {
+      this.listeners.push(person)
+    }
+  
+    broadcast(message) {
+      this.listeners.forEach(listener => { listener.hear(message) })
+    }
+  }
+  
+  module.exports = {
+    Person  : Person,
+    Network : Network
+  }

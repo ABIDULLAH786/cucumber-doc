@@ -53,3 +53,30 @@
 > E. "it weighed 1/2/3 gramme/grammes"
 
 > > The correct answer is 'A'  'C' 'E'
+
+<hr>
+#### How would you use the custom Parameter Type defined by the following code?
+
+
+```javascript
+defineParameterType({
+  name: 'state',
+  regexp: /activated/,
+  transformer: activationState => new Status(activationState)
+})
+```
+
+Choose only ONE best answer.
+
+> A. {activated}
+
+>B. {activationState}
+
+>C. {state}
+
+>D. {Status}
+
+>> The correct answer is 'C' 
+The name of a custom Parameter Type is defined by the name of the method that is decorated with the `@ParameterType` annotation.
+<hr>
+
